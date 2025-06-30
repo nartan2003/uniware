@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Uniware API CURL Explorer</title>
+  <link rel="icon" type="image/x-icon" href="data:image/jpeg;base64,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">
+  <link rel="icon" type="image/x-icon" href="your_favicon_base64_here">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -43,10 +42,10 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
       justify-content: center;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
 
     .header img {
@@ -55,7 +54,8 @@
       border-radius: 4px;
       margin-right: auto;
     }
-    h1:hover{color:yellow;}
+
+    h1:hover { color: yellow; }
 
     h1 {
       font-size: 2.3rem;
@@ -64,14 +64,18 @@
       text-align: center;
       flex: 1 1 100%;
       margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      position: relative;
     }
 
     input[type="text"] {
       width: 100%;
-      max-width: 600px;
       padding: 14px 20px;
-      margin: 0 auto 2rem auto;
-      display: block;
       border: 1px solid #ff758c;
       border-radius: 10px;
       font-size: 16px;
@@ -79,13 +83,28 @@
       color: #fff;
       box-shadow: 0 0 8px #ff4b5c55;
       transition: box-shadow 0.3s ease;
-      z-index: 1;
-      position: relative;
     }
 
     input[type="text"]:focus {
       outline: none;
       box-shadow: 0 0 15px #ff4b5caa;
+    }
+
+    #mic-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #ff4b5c;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    #mic-btn:hover {
+      transform: translateY(-50%) scale(1.2);
     }
 
     #results {
@@ -136,7 +155,6 @@
       font-size: 0.85rem;
       white-space: pre-wrap;
       border: 1px solid #2f2f2f;
-      position: relative;
     }
 
     .copy-btn {
@@ -173,7 +191,6 @@
 </head>
 <body>
 
-  <!-- Sprinkle background -->
   <script>
     for (let i = 0; i < 100; i++) {
       const sprinkle = document.createElement('div');
@@ -188,16 +205,22 @@
 
   <div class="header">
     <img src="https://infowordpress.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/02/03060918/unicommerce-logo.jpg" alt="Unicommerce Logo">
-    <h1>Uniware API Explorer (CURL Commands)
-</h1>
+    <h1>Uniware API Explorer (CURL Commands)</h1>
   </div>
 
-  <input type="text" id="searchInput" placeholder="🔍 Search API by name or keyword...">
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="🔍 Search API by name or keyword...">
+    <button id="mic-btn" title="Speak"><span>🎤</span></button>
+  </div>
 
   <div id="results"></div>
 
   <script>
-    const apiData = [
+    const searchInput = document.getElementById("searchInput");
+    const resultsDiv = document.getElementById("results");
+
+    // Dummy data for testing
+  const apiData = [
      {
         name: "Authorization",
         link:`<a href="https://ik.imagekit.io/u7af60cc4/authcurl.txt?updatedAt=1751018186502" target="_blank" style="color:red;">Curl Link</a>`,
@@ -395,6 +418,7 @@
       },
  {
         name: "Get Sale Order",
+         link:`<a href="https://ik.imagekit.io/u7af60cc4/get%20sale%20order.txt?updatedAt=1751257260037" target="_blank" style="color:red;">Curl Link</a>`,
        description: `Get Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-get.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
         curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
 
@@ -409,7 +433,22 @@
       
       {
         name: "Search Sale Order",
+        link:`<a href="https://ik.imagekit.io/u7af60cc4/search%20sale%20order.txt?updatedAt=1751257089564" target="_blank" style="color:red;">Curl Link</a>`,
        description: `Search Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-search.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
+       {
+        name: "Create Invoice and Allocate Shipping Provider",
+        link:`<a href="https://ik.imagekit.io/u7af60cc4/Create%20Invoice%20&%20allocate%20shipping%20provider.txt?updatedAt=1751257351183" target="_blank" style="color:red;">Curl Link</a>`,
+       description: `Create Invoice and Allocate Shipping Provider <a href="https://documentation.unicommerce.com/docs/shippingpackage-createinvoice-allocateshippingprovider.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
+      {
+        name: "Get Invoice Pdf by Invoice Code",
+        link:`<a href="https://ik.imagekit.io/u7af60cc4/Get%20Invoice%20Pdf%20by%20Invoice%20Code.txt?updatedAt=1751257750276" target="_blank" style="color:red;">Curl Link</a>`,
+       description: `Get Invoice Pdf by Invoice Code <a href="https://documentation.unicommerce.com/docs/getinvoicepdf-by-invoicecode.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
         curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
 
       },
@@ -625,10 +664,31 @@
         curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
 
       },
+      {
+        name: "Create & Close Manifest",
+         link:`<a href="https://ik.imagekit.io/u7af60cc4/Create%20&%20Close%20Manifest.txt?updatedAt=1751257975492" target="_blank" style="color:red;">Curl Link</a>`,
+       description:  `Create & Close Manifest<a href="https://documentation.unicommerce.com/docs/pos-shippingmanifest-create-close.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
+       {
+        name: "Get Shipping Manifest",
+         link:`<a href="https://ik.imagekit.io/u7af60cc4/Get%20Manifest%20PDF.txt?updatedAt=1751258144723" target="_blank" style="color:red;">Curl Link</a>`,
+       description:  `Get Shipping Manifest<a href="https://documentation.unicommerce.com/docs/shippingmanifest-get.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
        {
         name: "Allocate Shipping Provider",
          link:`<a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank" style="color:red;">Curl Link</a>`,
        description:  `Allocate Shipping Provider<a href="https://documentation.unicommerce.com/docs/allocateshippingprovider.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
+      {
+        name: "Mark Sale Order Return with Inventory Type ",
+         link:`<a href="https://ik.imagekit.io/u7af60cc4/Mark%20Sale%20Order%20Return%20with%20Inventory%20Type.txt?updatedAt=1751258318608" target="_blank" style="color:red;">Curl Link</a>`,
+       description:  `Mark Sale Order Return with Inventory Type <a href="https://documentation.unicommerce.com/docs/saleorder_markreturned_with_inventory_type.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
         curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
 
       },
@@ -737,18 +797,29 @@
         curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
 
       },
+      {
+        name: " Create Export Jobs",
+         link:`<a href="https://ik.imagekit.io/u7af60cc4/export%20jobs.txt?updatedAt=1751258495698" target="_blank" style="color:red;">Curl Link</a>`,
+       description:  ` Create Export Jobs<a href="https://documentation.unicommerce.com/docs/export-create.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
+      {
+        name: "Get Export Job Status & Report",
+         link:`<a href="https://ik.imagekit.io/u7af60cc4/export2.txt?updatedAt=1751258620642" target="_blank" style="color:red;">Curl Link</a>`,
+       description:  `Get Export Job Status & Report<a href="https://documentation.unicommerce.com/docs/export-status.html" target="_blank" style="color: #0ff;">Read Docs</a>`,
+        curl:"curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+
+      },
       
     ];
-
-    const searchInput = document.getElementById("searchInput");
-    const resultsDiv = document.getElementById("results");
 
     function displayResults(data) {
       resultsDiv.innerHTML = data.map(api => `
         <div class="card">
           <h2>${api.name}</h2>
           <p>${api.description}</p>
-           <p>${api.link}</p>
+          <p>${api.link}</p>
           <pre><button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>${api.curl}</pre>
         </div>
       `).join('');
@@ -756,23 +827,45 @@
 
     function copyToClipboard(button) {
       const text = button.parentElement.textContent.replace('Copy', '').trim();
-      navigator.clipboard.writeText(text).then(() => {
-        button.textContent = "Copied!";
-        setTimeout(() => button.textContent = "Copy", 2000);
-      });
+      navigator.clipboard.writeText(text);
+      button.textContent = "Copied!";
+      setTimeout(() => button.textContent = "Copy", 2000);
     }
 
     searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
-      const filtered = apiData.filter(api =>
-        api.name.toLowerCase().includes(query) ||
-        api.description.toLowerCase().includes(query)
-      );
+      const value = searchInput.value.toLowerCase();
+      const filtered = apiData.filter(api => api.name.toLowerCase().includes(value) || api.description.toLowerCase().includes(value));
       displayResults(filtered);
     });
 
-    displayResults(apiData);
-  </script>
+    displayResults(apiData); // Load initially
 
+    // Voice to text functionality
+    const micBtn = document.getElementById("mic-btn");
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+
+      micBtn.addEventListener('click', () => {
+        recognition.start();
+        micBtn.innerHTML = "🛑";
+      });
+
+      recognition.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        searchInput.value = transcript;
+        searchInput.dispatchEvent(new Event("input"));
+        micBtn.innerHTML = "🎤";
+      };
+
+      recognition.onend = () => {
+        micBtn.innerHTML = "🎤";
+      };
+    } else {
+      micBtn.disabled = true;
+      micBtn.title = "Speech Recognition not supported";
+    }
+  </script>
 </body>
 </html>
