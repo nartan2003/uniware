@@ -23,6 +23,7 @@
       font-family: 'Inter', sans-serif;
       color: var(--text);
       padding: 2rem;
+      cursor: pointer;
     }
 
     .top-bar {
@@ -34,14 +35,6 @@
       background: linear-gradient(to right, #f9f9f9, #e0e0e0);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    }
-
-    .top-bar:hover {
-      background: linear-gradient(to right, #2c2c2c, #3b3b3b);
-    }
-
-    .top-bar:hover h1 {
-      color: #fff;
     }
 
     .logo-container img {
@@ -65,6 +58,23 @@
       color: #111111;
       letter-spacing: 0.5px;
       transition: color 0.3s ease;
+    }
+
+    .support-icon {
+      margin-left: auto;
+      margin-right: 10px;
+    }
+
+    .support-icon a svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+      transition: transform 0.2s ease;
+    }
+
+    .support-icon a:hover svg {
+      transform: scale(1.2);
+      fill: #001a66;
     }
 
     .search-box {
@@ -118,53 +128,41 @@
       gap: 1.5rem;
     }
 
- .card {
-  background: #ffffff;
-  color: #000000;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: background 0.3s, box-shadow 0.3s;
-}
+    .card {
+      background: #ffffff;
+      color: #000000;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
 
-.card:hover {
-  background: #f0f0f0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.card p {
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-  font-style: italic;
-}
-
-.card pre {
-  background: #f5f5f5;
-  padding: 15px;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-size: 0.9rem;
-  color: #000;
-  white-space: pre-wrap;
-}
-
+    .card:hover {
+      background: #f0f0f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
     .card h2 {
       font-size: 1.2rem;
       margin-bottom: 10px;
+      font-weight: bold;
     }
 
     .card p {
       font-size: 0.95rem;
       margin-bottom: 12px;
+      font-style: italic;
     }
 
+    .card pre {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      color: #000;
+      white-space: pre-wrap;
+    }
 
     .card a {
       color: #3399ff;
@@ -201,6 +199,16 @@
     <div class="title-container">
       <h1>Uniware API CURL Explorer</h1>
     </div>
+    <div class="support-icon">
+      <a href="https://support.unicommerce.com/" target="_blank" title="Support Documentation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0033cc" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
+            10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm1.07-7.75l-.9.92C12.45
+            12.9 12 13.5 12 15h-2v-.5c0-1 .45-1.99 1.17-2.7l1.24-1.26A2 2 0
+            0012 7c-1.1 0-2 .9-2 2H8a4 4 0 018 0c0 1.1-.45 2.1-1.17 2.75z"/>
+        </svg>
+      </a>
+    </div>
   </div>
 
   <div class="search-box">
@@ -211,9 +219,11 @@
   <div id="results" class="results"></div>
 
   <script>
+    const searchInput = document.getElementById("searchInput");
+    const resultsDiv = document.getElementById("results");
+
     const apiData = [
-     
-  {
+      {
     name: "Authorization",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/authcurl.txt?updatedAt=1751018186502" target="_blank">Curl Link</a>`,
     description: `Authorization <a href="https://documentation.unicommerce.com/docs/oauth.html" target="_blank">Read Docs</a>`,
@@ -512,12 +522,35 @@
   {
     name: "Create Gatepass",
     description: `Create Gatepass <a href="https://documentation.unicommerce.com/docs/gatepass_create.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
-  },
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/gatepass/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 7d146240-dbc5-4703-a14b-9682bddaf10d' \
+--header 'Facility: Warehouse24' \
+--data '{
+    "wsGatePass": {
+      "code": "TEST_PRODUCT-2",
+      "transferAmount": 10,
+      
+      "customFieldValues": [
+         {
+            "name": "string",
+            "value": "string"
+         }
+      ]
+   },
+   "type": "NON_RETURNABLE",
+   "partyCode": "vaforltd09"
+}'`},
   {
     name: "Complete Gatepass",
     description: `Complete Gatepass <a href="https://documentation.unicommerce.com/docs/gatepass-complete.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/gatepass/complete' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 7d146240-dbc5-4703-a14b-9682bddaf10d' \
+--header 'Facility: Warehouse24' \
+--data '{
+   "gatePassCode": "TEST_PRODUCT-2"
+}'`
   },
   {
     name: "Update Gatepass",
@@ -771,13 +804,7 @@
     description: `Get Export Job Status & Report <a href="https://documentation.unicommerce.com/docs/export-status.html" target="_blank">Read Docs</a>`,
     curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
   },
-
-
-
     ];
-
-    const searchInput = document.getElementById("searchInput");
-    const resultsDiv = document.getElementById("results");
 
     function renderResults(data) {
       resultsDiv.innerHTML = "";
@@ -860,5 +887,6 @@
       micBtn.title = "Speech recognition not supported in this browser";
     }
   </script>
+
 </body>
 </html>
