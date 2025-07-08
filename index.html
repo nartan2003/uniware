@@ -7,9 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #ffffff;
+      --primary: #007d8a;
+      --background: #ffffff;
       --text: #000000;
-      --accent: #0033cc;
     }
 
     * {
@@ -19,92 +19,68 @@
     }
 
     body {
-      background: var(--bg);
       font-family: 'Inter', sans-serif;
+      background: var(--background);
       color: var(--text);
-      padding: 2rem;
-      cursor: pointer;
     }
 
     .top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 30px;
-      margin-bottom: 2rem;
-      background: linear-gradient(to right, #f9f9f9, #e0e0e0);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      padding: 16px 30px;
+      border-bottom: 1px solid #e0e0e0;
     }
 
     .logo-container img {
-      height: 60px;
-      transition: transform 0.3s ease;
+      height: 50px;
     }
 
-    .logo-container img:hover {
-      transform: scale(1.1);
+    .top-bar button {
+      padding: 10px 16px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
     }
 
-    .title-container {
-      flex: 1;
+    .top-bar button:hover {
+      background-color: #005f65;
+    }
+
+    .hero {
+      background-color: var(--primary);
       text-align: center;
-      margin-right: 60px;
+      padding: 60px 20px;
+      color: white;
     }
 
-    .title-container h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #111111;
-      letter-spacing: 0.5px;
-      transition: color 0.3s ease;
-    }
-
-    .support-icon {
-      margin-left: auto;
-      margin-right: 10px;
-    }
-
-    .support-icon a svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--accent);
-      transition: transform 0.2s ease;
-    }
-
-    .support-icon a:hover svg {
-      transform: scale(1.2);
-      fill: #001a66;
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 24px;
     }
 
     .search-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
     }
 
     .search-box input {
       width: 100%;
-      max-width: 600px;
       padding: 14px 20px 14px 50px;
-      border: 2px solid #ccc;
       border-radius: 999px;
+      border: none;
       font-size: 16px;
       outline: none;
-      background-color: #f4f6fc;
+      background-color: white;
+      color: #111;
       background-image: url("data:image/svg+xml,%3Csvg fill='gray' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21.53 20.47l-4.387-4.387A7.928 7.928 0 0018 10a8 8 0 10-8 8 7.928 7.928 0 006.083-2.857l4.387 4.387a.75.75 0 001.06-1.06zM10 16a6 6 0 110-12 6 6 0 010 12z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: 18px center;
       background-size: 20px;
-      color: #111;
-      transition: all 0.3s ease;
-    }
-
-    .search-box input:hover {
-      border-color: var(--accent);
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 51, 204, 0.15);
     }
 
     #mic-btn {
@@ -113,95 +89,70 @@
       border: none;
       font-size: 22px;
       cursor: pointer;
-      color: var(--accent);
-      transition: transform 0.2s ease;
+      color: white;
+      position: absolute;
+      right: 10px;
+      top: 10px;
     }
 
     #mic-btn:hover {
       transform: scale(1.2);
-      color: #001a66;
     }
 
     .results {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
     .card {
-      background: #ffffff;
-      color: #000000;
+      background: #fafafa;
       padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      background: #f0f0f0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
     }
 
     .card h2 {
-      font-size: 1.2rem;
+      font-size: 18px;
       margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-      font-style: italic;
     }
 
     .card pre {
       background: #f5f5f5;
-      padding: 15px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 6px;
       overflow-x: auto;
-      font-size: 0.9rem;
-      color: #000;
-      white-space: pre-wrap;
-    }
-
-    .card a {
-      color: #3399ff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .card a:hover {
-      color: #66b2ff;
-      text-decoration: underline;
     }
 
     .copy-btn {
       margin-top: 10px;
       padding: 6px 12px;
-      background: #0033cc;
+      background-color: var(--primary);
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
     }
 
     .copy-btn:hover {
-      background: #001a80;
+      background-color: #005f65;
     }
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <div class="logo-container">
-      <img src="https://infowordpress.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/02/03060918/unicommerce-logo.jpg" alt="Unicommerce Logo" />
-    </div>
-    <div class="title-container">
-      <h1>Uniware API CURL Explorer</h1>
-    </div>
-    <div class="support-icon">
-      <a href="https://support.unicommerce.com/" target="_blank" title="Support Documentation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0033cc" viewBox="0 0 24 24">
+  <!-- Top bar -->
+   <div class="top-bar">
+  <div class="logo-container">
+    <img src="https://infowordpress.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/02/03060918/unicommerce-logo.jpg" alt="Unicommerce Logo" />
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 16px;">
+    <!-- Support Icon -->
+    <div class="support-icon" title="Support Documentation">
+      <a href="https://support.unicommerce.com/" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#007d8a" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10
             10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm1.07-7.75l-.9.92C12.45
             12.9 12 13.5 12 15h-2v-.5c0-1 .45-1.99 1.17-2.7l1.24-1.26A2 2 0
@@ -209,21 +160,45 @@
         </svg>
       </a>
     </div>
+
+    <!-- Chat Support Icon -->
+    <div class="chatbot-icon" title="Ask AI Assistant">
+      <a href="https://www.chatbase.co/chatbot-iframe/jkBYIWIL_T_Ha8z87ekB5" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat Icon" width="28" style="cursor: pointer;" />
+      </a>
+    </div>
+  </div>
+</div>
+
+
+    <!-- <button onclick="window.open('https://unicommerce.com/request-demo', '_blank')">Request a Demo</button> -->
+  </div>
+</div>
+
+  
+
+  <!-- Hero section -->
+  <div class="hero">
+    <h1>Uniware API CURL Explorer</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search API by name or keyword..." />
+      <button id="mic-btn" title="Voice Search">🎤</button>
+    </div>
   </div>
 
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search API by name or keyword..." />
-    <button id="mic-btn" title="Voice Search">🎤</button>
-  </div>
+  <!-- Results -->
+  <div class="results" id="results"></div>
 
-  <div id="results" class="results"></div>
+  
 
+  <!-- Script: Use your original logic -->
   <script>
     const searchInput = document.getElementById("searchInput");
     const resultsDiv = document.getElementById("results");
 
-    const apiData = [
-      {
+      const apiData = [
+     
+  {
     name: "Authorization",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/authcurl.txt?updatedAt=1751018186502" target="_blank">Curl Link</a>`,
     description: `Authorization <a href="https://documentation.unicommerce.com/docs/oauth.html" target="_blank">Read Docs</a>`,
@@ -804,8 +779,10 @@
     description: `Get Export Job Status & Report <a href="https://documentation.unicommerce.com/docs/export-status.html" target="_blank">Read Docs</a>`,
     curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
   },
-    ];
 
+
+
+    ];
     function renderResults(data) {
       resultsDiv.innerHTML = "";
       data.forEach(api => {
@@ -813,8 +790,8 @@
         card.className = "card";
         card.innerHTML = `
           <h2>${api.name}</h2>
-          <p>${api.description} | ${api.link}</p>
-          <pre><code>${api.curl.replace(/\n/g, "<br>")}</code></pre>
+          <p>${api.description} | <a href="${api.link}" target="_blank">${api.link}</a></p>
+          <pre><code>${api.curl}</code></pre>
           <button class="copy-btn" onclick="copyCurl(this)">Copy Curl</button>
         `;
         resultsDiv.appendChild(card);
@@ -887,6 +864,5 @@
       micBtn.title = "Speech recognition not supported in this browser";
     }
   </script>
-
 </body>
 </html>
