@@ -83,22 +83,7 @@
       background-size: 20px;
     }
 
-    #mic-btn {
-      margin-left: -40px;
-      background: transparent;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: white;
-      position: absolute;
-      right: 10px;
-      top: 10px;
-    }
-
-    #mic-btn:hover {
-      transform: scale(1.2);
-    }
-
+    
     .results {
       max-width: 800px;
       margin: 40px auto;
@@ -182,7 +167,7 @@
     <h1>Uniware API CURL Explorer</h1>
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Search API by name or keyword..." />
-      <button id="mic-btn" title="Voice Search">🎤</button>
+     
     </div>
   </div>
 
@@ -818,51 +803,7 @@
     renderResults(apiData);
 
     // Voice recognition
-    const micBtn = document.getElementById("mic-btn");
-    let isListening = false;
-
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const recognition = new SpeechRecognition();
-      recognition.lang = 'en-US';
-
-      micBtn.addEventListener("click", () => {
-        if (!isListening) {
-          recognition.start();
-          micBtn.innerText = "🎙️";
-          isListening = true;
-        } else {
-          recognition.stop();
-          micBtn.innerText = "🎤";
-          isListening = false;
-        }
-      });
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        searchInput.value = transcript;
-        const term = transcript.toLowerCase();
-        const filtered = apiData.filter(api =>
-          api.name.toLowerCase().includes(term) ||
-          api.description.toLowerCase().includes(term)
-        );
-        renderResults(filtered);
-      };
-
-      recognition.onend = () => {
-        micBtn.innerText = "🎤";
-        isListening = false;
-      };
-
-      recognition.onerror = (e) => {
-        alert("Speech recognition error: " + e.error);
-        micBtn.innerText = "🎤";
-        isListening = false;
-      };
-    } else {
-      micBtn.disabled = true;
-      micBtn.title = "Speech recognition not supported in this browser";
-    }
+   
   </script>
 </body>
 </html>
