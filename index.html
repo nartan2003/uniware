@@ -181,13 +181,14 @@
     const searchInput = document.getElementById("searchInput");
     const resultsDiv = document.getElementById("results");
 
-      const apiData = [
+    const apiData = [
      
   {
     name: "Authorization",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/authcurl.txt?updatedAt=1751018186502" target="_blank">Curl Link</a>`,
     description: `Authorization <a href="https://documentation.unicommerce.com/docs/oauth.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' \\\n--header 'Facility:'`
+    curl: `curl --location 'https://trainingteam.unicommerce.com/oauth/token?grant_type=password&client_id=my-trusted-client&username=nartan.tyagi%40unicommerce.com&password=nartan123%40' \
+--header 'Content-Type: application/json'`
   },
   {
     name: "Inventory adjustment",
@@ -280,13 +281,25 @@
     name: "Close Purchase Orders",
     link: "",
     description: `Close Purchase Orders. <a href="https://documentation.unicommerce.com/docs/purchaseorder-close.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' \\\n--header 'Facility:'`
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/purchaseOrder/close' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer af2d1630-0a46-4161-96da-312f798cd5de' \
+--header 'facility: warehouse24' \
+--data '{
+   "purchaseOrderCode": "DEF0263"
+}'`
   },
   {
     name: "Get Purchase Order Details",
     link: "",
     description: `Get Purchase Order Details. <a href="https://documentation.unicommerce.com/docs/get_purchase_order_details.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' \\\n--header 'Facility:'`
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/purchaseOrder/getPurchaseOrderDetails' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer af2d1630-0a46-4161-96da-312f798cd5de' \
+--header 'facility: warehouse24' \
+--data '{
+   "purchaseOrderCode": "DEF0263"
+}'`
   },
   {
     name: "Create GRN",
@@ -775,7 +788,7 @@
         card.className = "card";
         card.innerHTML = `
           <h2>${api.name}</h2>
-          <p>${api.description} | <a href="${api.link}" target="_blank">${api.link}</a></p>
+          <p>${api.description} </p>
           <pre><code>${api.curl}</code></pre>
           <button class="copy-btn" onclick="copyCurl(this)">Copy Curl</button>
         `;
