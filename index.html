@@ -438,7 +438,19 @@
     name: "Search Sale Order",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/search%20sale%20order.txt?updatedAt=1751257089564" target="_blank">Curl Link</a>`,
     description: `Search Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-search.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer 0ccb0165-416f-4526-93f0-7fcabfe6234c' \
+--data '{
+    "fromDate": "2025-07-03T03:52:13.812Z",
+    "channel":"FLIPKART_marsinfiniti,CUSTOM,CENTREPOINT",
+    "toDate": "2025-07-09T03:52:13.812Z",
+    "dateType":"CREATED",
+    "status": "PROCESSING",
+    "facilityCodes": [
+     "warehouse24"
+   ]
+}'`
   },
   {
     name: "Create Invoice and Allocate Shipping Provider",
@@ -497,13 +509,11 @@
     description: `Create Gatepass <a href="https://documentation.unicommerce.com/docs/gatepass_create.html" target="_blank">Read Docs</a>`,
     curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/gatepass/create' \
 --header 'Content-Type: application/json' \
---header 'Authorization: bearer 7d146240-dbc5-4703-a14b-9682bddaf10d' \
---header 'Facility: Warehouse24' \
+--header 'Authorization: bearer 0ccb0165-416f-4526-93f0-7fcabfe6234c' \
+--header 'facility: warehouse24' \
 --data '{
     "wsGatePass": {
-      "code": "TEST_PRODUCT-2",
-      "transferAmount": 10,
-      
+      "code": "gp-002",
       "customFieldValues": [
          {
             "name": "string",
@@ -512,7 +522,8 @@
       ]
    },
    "type": "NON_RETURNABLE",
-   "partyCode": "vaforltd09"
+   "partyCode": "samir"
+}'
 }'`},
   {
     name: "Complete Gatepass",
@@ -538,12 +549,27 @@
   {
     name: "Discard Gatepass",
     description: `Discard Gatepass <a href="https://documentation.unicommerce.com/docs/gatepass-discard.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/gatepass/discard' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 0ccb0165-416f-4526-93f0-7fcabfe6234c' \
+--header 'Facility: Warehouse24' \
+--data '{
+   "gatePassCode": "gp-001"
+}'`
   },
   {
     name: "Search Gatepass",
     description: `Search Gatepass <a href="https://documentation.unicommerce.com/docs/gatepass-search.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/gatepass/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 0ccb0165-416f-4526-93f0-7fcabfe6234c' \
+--header 'Facility: Warehouse24' \
+--data '{
+   "fromDate": "2025-06-29T00:00:00",
+   "toDate": "2025-07-09T00:00:00",
+   "toParty": "Test-201",
+   "statusCode": "RETURN_AWAITED"
+}'`
   },
   {
     name: "Get Gatepass",
