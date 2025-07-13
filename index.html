@@ -148,7 +148,7 @@
 
     <!-- Chat Support Icon -->
     <div class="chatbot-icon" title="Ask AI Assistant">
-      <a href="https://www.chatbase.co/chatbot-iframe/jkBYIWIL_T_Ha8z87ekB5" target="_blank">
+      <a href="https://support.unicommerce.com/" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat Icon" width="28" style="cursor: pointer;" />
       </a>
     </div>
@@ -213,19 +213,78 @@
     name: "Create or Update Items",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/invetoryadjustcuel.txt?updatedAt=1751018505110" target="_blank">Curl Link</a>`,
     description: `Update inventory. <a href="https://documentation.unicommerce.com/docs/createoredit-itemtypes.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' \\\n--header 'Facility:'`
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/catalog/itemType/createOrEdit' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+   "itemType": {
+      "categoryCode": "nartan123",
+      "skuCode": "newsku25",
+      "name": "new product",
+      "type": "SIMPLE"
+   }
+}'`
   },
   {
     name: "Create Vendor",
     link: "",
     description: `Create Vendor. <a href="https://documentation.unicommerce.com/docs/vendor-createoredit.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' \\\n--header 'Facility:'`
-  },
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/vendor/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data-raw '{
+   "vendor": {
+      "code": "vendor25",
+      "name": "new vendor",
+     
+      "taxExempted": false,
+      "enabled": true,
+      "billingAddress":{
+         "addressLine1":"m3m",
+         "addressLine2":"r32",
+         "countryCode":"IN",
+         "pincode":"122102",
+         "stateCode":"HR",
+         "city":"gurugram",
+         "phone":"9898989898"
+      },
+      "shippingAddress":{
+         "addressLine1":"m3m",
+         "countryCode":"IN",
+         "pincode":"122102",
+         "stateCode":"HR",
+         "city":"gurugram",
+         "phone":"9898989898"
+      },
+      "partyContacts": [
+   {
+        "contactType": "PRIMARY",
+        "name": "new vendor",
+        "email": "vendor@gmail.com",
+        "phone": "9898989898"
+   }
+    ]
+   }
+}'`},
   {
     name: "Vendor Catalog",
     link: "",
     description: `Vendor Catalog. <a href="https://documentation.unicommerce.com/docs/vendoritemtype-createoredit.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' \\\n--header 'Facility:'`
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/vendorItemType/createOrEdit' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--header 'Facility: warehouse24' \
+--data '{
+   "vendorItemType": {
+      "vendorCode": "vaforltd09",
+      "itemTypeSkuCode": "TEST_PRODUCT-2",
+      "vendorSkuCode": "TEST_PRODUCT-2",
+      "unitPrice": 20,
+      "priority": 1,
+      "enabled": true
+   }
+}'`
   },
   {
     name: "Purchase Order Create",
@@ -275,7 +334,20 @@
     name: "Create & Approve Purchase Orders",
     link: "",
     description: `Create and Approve Purchase Orders. <a href="https://documentation.unicommerce.com/docs/purchaseorder_create_approve.html" target="_blank">Read Docs</a>`,
-    curl: `curl --location 'https://trainingteam.unicommerce.com/oauth/token?grant_type=password&client_id=my-trusted-client&username=""&password=""' \\\n--header 'Content-Type: application/json'`
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/purchaseOrder/createApproved' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+   "vendorCode": "vaforltd09",
+   "purchaseOrderItems": [
+      {
+         "itemSKU": "t-bl01",
+         "quantity": 10,
+         "unitPrice": 100
+      }
+   ]
+}'`
   },
   {
     name: "Close Purchase Orders",
@@ -348,23 +420,35 @@
   {
     name: "Search GRN",
     description: `Search GRN. <a href="https://documentation.unicommerce.com/docs/inflowreceipt-getinflowreceipts.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/purchase/inflowReceipt/getInflowReceipts' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+   "purchaseOrderCode": "PO0281",
+   "createdBetween": {
+      "start": "2025-07-12T06:40:52.693Z",
+      "end": "2025-07-13T06:40:52.693Z",
+      "textRange": "TODAY"
+   }
+}'`
   },
   {
     name: "Create or Update Category",
-    link: `<a href="https://ik.imagekit.io/u7af60cc4/authcurl.txt?updatedAt=1751018186502" target="_blank" class="api-link">Curl Link</a>`,
-    description: `Create or Update Category. <a href="https://documentation.unicommerce.com/docs/category-addoredit.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
-  },
-  {
-    name: "Create or Update Category",
-    description: `Create or Update Item. <a href="https://documentation.unicommerce.com/docs/createoredit-itemtype.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
-  },
-  {
-    name: "Create or Update Items",
-    description: `Create or Update Items. <a href="https://documentation.unicommerce.com/docs/createoredit-itemtypes.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+    description: `Create or Update Item. <a href="https://documentation.unicommerce.com/docs/category-addoredit.html" target="_blank" class="doc-link">Read Docs</a>`,
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/product/category/addOrEdit' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+   "category": {
+      "code": "cat25",
+      "name": "new category",
+      "taxTypeCode": "DEFAULT",
+      "gstTaxTypeCode": "12_GST_12",
+      "expirable": true,
+      "shelfLife": 100
+   }
+}'`
   },
   {
     name: "Create or Update Channel Item Type",
@@ -374,7 +458,12 @@
   {
     name: "Get Item Details",
     description: `Get Item Details <a href="https://documentation.unicommerce.com/docs/itemtype-get.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+    curl: `curl --location 'https://varad.unicommerce.com/services/rest/v1/catalog/itemType/get' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer d7db1f04-8b4c-4da3-bf77-e3f1f13b8d2d' \
+--data '{
+   "skuCode": "GurgaonSKU"
+}'`
   },
   {
     name: "Get Item Barcode Details",
@@ -384,23 +473,75 @@
   {
     name: "Search Item(s)",
     description: `Search Item(s) <a href="https://documentation.unicommerce.com/docs/search-itemtype.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
-  },
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/product/itemType/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+   "productCode": "TEST_PRODUCT-2",
+   "categoryCode": "Default"
+   }
+'`},
   {
     name: "Get Inventory Snapshot",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/snapshotcurl.txt?updatedAt=1751019082118" target="_blank" class="api-link">Curl Link</a>`,
     description: `Get Inventory Snapshot <a href="https://documentation.unicommerce.com/docs/inventory-snapshot.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/inventorySnapshot/get' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--header 'Facility: warehouse24' \
+--data '{
+   "itemTypeSKUs":["TEST_PRODUCT-2","kidshoes1","nartan001","nartan002"]
+   
+}'`
   },
   {
     name: "Adjust Inventory (Single)",
     description: `Adjust Inventory (Single) <a href="https://documentation.unicommerce.com/docs/adjust-inventory.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+    curl: `curl --location 'https://varad.unicommerce.com/services/rest/v1/inventory/adjust' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 70054e68-d997-4d05-9d44-e21047599db4' \
+--header 'Facility: varad' \
+--data '{
+   "inventoryAdjustment": {
+      "itemSKU": "easybuild1",
+      "quantity": 10,
+      "shelfCode": "DEFAULT",
+      "inventoryType": "GOOD_INVENTORY",
+      "adjustmentType": "ADD",
+      "remarks": "string"
+   }
+}'`
   },
   {
     name: "Adjust Inventory (Multiple)",
     description: `Adjust Inventory (Multiple) <a href="https://documentation.unicommerce.com/docs/adjust-inventory-bulk.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer 3c6009f9-5bb4-4f1f-b489-e06783aa2130' --header 'Facility:"
+    curl:`curl --location 'https://varad.unicommerce.com/services/rest/v1/inventory/adjust/bulk' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 70054e68-d997-4d05-9d44-e21047599db4' \
+--header 'Facility: varad' \
+--data '{
+   "inventoryAdjustments": [
+      {
+         "itemSKU": "easybuild1",
+         "quantity": 100,
+         "shelfCode": "DEFAULT",
+         "inventoryType": "GOOD_INVENTORY",
+         "adjustmentType": "ADD",
+         "remarks": "string",
+         "facilityCode": "varad"
+      },
+      {
+         "itemSKU": "CP21",
+         "quantity": 100,
+         "shelfCode": "DEFAULT",
+         "inventoryType": "GOOD_INVENTORY",
+         "adjustmentType": "ADD",
+         "remarks": "string",
+         "facilityCode": "varad"
+      }
+   ],
+   "forceAllocate": false
+}'`
   },
   {
     name: "Mark Inventory Found",
@@ -410,28 +551,162 @@
   {
     name: "Create Customer",
     description: `Create Customer <a href="https://documentation.unicommerce.com/docs/customer-create.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer your-token' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/customer/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data-raw '{
+   "customer": {
+      "name": "new customer",
+      "code": "customer25",
+      "enabled": true,
+      "taxExempted": true,
+      "billingAddress": {
+         "addressLine1": "m3m",
+         "city": "gurugram",
+         "stateCode": "HR",
+         "countryCode": "IN",
+          "pincode": "122102",
+         "phone": "9898989898"
+      },
+      "shippingAddress": {
+         "addressLine1": "m3m",
+        "city": "gurugram",
+         "stateCode": "HR",
+         "countryCode": "IN",
+         "pincode": "122102",
+        "phone": "9898989898"
+      },
+      "partyContacts": [
+         {
+            "contactType": "primary",
+            "name": "vendor new",
+            "email": "vendor@gmail.com",
+            "phone": "9898989898"
+         }
+      ]
+   }
+}'`
   },
   {
     name: "Update Customer",
     description: `Update Customer <a href="https://documentation.unicommerce.com/docs/customer-edit.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer your-token' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/customer/edit' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data-raw '{
+   "customer": {
+      "name": "new customer",
+      "code": "customer25",
+      "enabled": true,
+      "taxExempted": true,
+      "billingAddress": {
+         "addressLine1": "m3m",
+         "city": "gurugram",
+         "stateCode": "HR",
+         "countryCode": "IN",
+          "pincode": "122102",
+         "phone": "9898989898"
+      },
+      "shippingAddress": {
+         "addressLine1": "m3m",
+        "city": "gurugram",
+         "stateCode": "HR",
+         "countryCode": "IN",
+         "pincode": "122102",
+        "phone": "9898989898"
+      },
+      "partyContacts": [
+         {
+            "contactType": "primary",
+            "name": "new customer",
+            "email": "vendor@gmail.com",
+            "phone": "9898989898"
+         }
+      ]
+   }
+}'`
   },
   {
     name: "Create Sale Order",
     description: `Create Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-create.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer your-token' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--header 'Facility: warehouse24' \
+--data-raw '{
+   "saleOrder": {
+      "code": "125034506",
+      "displayOrderCode": "125034506",
+      "displayOrderDateTime": "2025-07-11T09:23:48.023Z",
+      "channel": "TestChannel",
+      "channelProcessingTime": "2025-07-12T09:23:48.023Z",
+      "cashOnDelivery": true,
+      "addresses": [
+         {
+            "id": "test",
+            "name": "test",
+            "addressLine1": "test",
+            "city": "Gurgaon",
+            "state": "Haryana",
+            "country": "India",
+            "pincode": "122001",
+            "phone": "9999999999",
+            "email": "test@gmail.com"
+         }
+      ],
+      "billingAddress": {
+         "referenceId": "test"
+      },
+      "shippingAddress": {
+         "referenceId": "test"
+      },
+      "saleOrderItems":[
+       {
+        "itemSku": "TEST_PRODUCT-2" ,
+        "code": "TEST_PRODUCT-2" ,
+        "sellingPrice": "950" ,
+        "shippingMethodCode": "STD",
+         "totalPrice": "10" 
+       }
+       ],
+      "customFieldValues": [
+         {
+            "name": "string",
+            "value": "string"
+         }
+      ],
+      "currencyCode": "INR",
+      "taxExempted": true,
+      "cformProvided": true,
+      "fulfillmentTat": "2025-07-18T09:23:48.023Z"
+   }
+}'`
   },
   {
     name: "Get Sale Order",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/get%20sale%20order.txt?updatedAt=1751257260037" target="_blank" class="api-link">Curl Link</a>`,
     description: `Get Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-get.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer your-token' --header 'Facility:'"
+    curl: `curl --location 'https://varad.unicommerce.com/services/rest/v1/oms/saleorder/get' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 70054e68-d997-4d05-9d44-e21047599db4' \
+--data '{
+   "code": "AK011",
+   "facilityCodes": [
+      "varad"
+   ]
+}'`
   },
   {
     name: "Verify Sale Order",
     description: `Verify Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-verify.html" target="_blank" class="doc-link">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer your-token' --header 'Facility:'"
+    curl:`curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/verify' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--data '{
+   "saleOrderCode": "125034506"
+}'`
   },
   
   {
@@ -462,7 +737,9 @@
     name: "Get Invoice Pdf by Invoice Code",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/Get%20Invoice%20Pdf%20by%20Invoice%20Code.txt?updatedAt=1751257750276" target="_blank">Curl Link</a>`,
     description: `Get Invoice Pdf by Invoice Code <a href="https://documentation.unicommerce.com/docs/getinvoicepdf-by-invoicecode.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/invoice/show?invoiceCodes=INS0886' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--header 'Facility: warehouse24'`
   },
   {
     name: "Update Sale Order",
@@ -472,27 +749,66 @@
   {
     name: "Hold Sale Order",
     description: `Hold Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-hold.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/hold' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--data '{
+   "saleOrderCode": "125034506"
+}'`
   },
   {
     name: "UNHold Sale Order",
     description: `UNHold Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-unhold.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/unhold' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--data '{
+   "saleOrderCode": "125034506"
+}'`
   },
   {
     name: "Hold Sale Order Items",
     description: `Hold Sale Order Items <a href="https://documentation.unicommerce.com/docs/saleorder-holditems.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/holdSaleOrderItems' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--data '
+{
+   "saleOrderCode": "125034506",
+   "saleOrderItemCodes": [
+      "125034506-0","125034506-1"
+   ]
+}'`
   },
   {
     name: "Unhold Sale Order Items",
     description: `Unhold Sale Order Items <a href="https://documentation.unicommerce.com/docs/saleorder-unholditems.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/unholdSaleOrderItems' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer cf05611a-ed37-4d50-bece-28ce6a56560a' \
+--data '
+{
+   "saleOrderCode": "125034506",
+   "saleOrderItemCodes": [
+      "125034506-0","125034506-1"
+   ]
+}'`
   },
  {
     name: "Cancel Sale Order",
     description: `Cancel Sale Order <a href="https://documentation.unicommerce.com/docs/saleorder-cancel.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl:`curl --location 'https://varad.unicommerce.com/services/rest/v1/oms/saleOrder/cancel' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 70054e68-d997-4d05-9d44-e21047599db4' \
+--data '{
+  "saleOrderCode": "SO09527",
+  "saleOrderItemCodes": [
+    "SO09527-0",
+    "SO09527-1",
+    "SO09527-2"
+  ],
+  "cancellationReason": "abc"
+}'`
   },
   {
     name: "Switch Facility Sale Order Items",
@@ -579,13 +895,26 @@
   {
     name: "Search Facility",
     description: `Search Facility <a href="https://documentation.unicommerce.com/docs/facility-search.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/facility/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+    "facilityStatus":"ENABLED",
+    "fromDate" : "2025-05-26T09:23:48.023Z",
+    "toDate"   : "2025-07-13T09:23:48.023Z",
+    "dateType" : "CREATED"
+}'`
   },
   {
     name: "Get Facility Details",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/getfacility.txt?updatedAt=1751023081147" target="_blank">Curl Link</a>`,
     description: `Get Facility Details <a href="https://documentation.unicommerce.com/docs/facility-get.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/facility/get' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+      "facilityCode":"warehouse24"
+}'`
   },
   {
     name: "Create Shipping Package",
@@ -597,7 +926,14 @@
     name: "Search Shipping Package",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingpackage-search.html" target="_blank">Curl Link</a>`,
     description: `Search Shipping Package <a href="https://documentation.unicommerce.com/docs/shippingpackage-search.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/shippingPackage/search' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+   "shippingPackageCode": "SP-01946",
+   "saleOrderCode": "SO10112"
+}'`
   },
   {
     name: "Update Shipping Package",
@@ -663,19 +999,35 @@
     name: "Get Invoice Label",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank">Curl Link</a>`,
     description: `Get Invoice Label <a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/shippingPackage/getInvoiceLabel' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+   "shippingPackageCode": "SP-01946"
+}'`
   },
   {
     name: "Get Shipping Label PDF",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank">Curl Link</a>`,
     description: `Get Shipping Label PDF <a href="https://documentation.unicommerce.com/docs/shippingpackage_labelpdf.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location --request POST 'https://varad.unicommerce.com/services/rest/v1/oms/shipment/show?shippingPackageCodes=VARAAA139116' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 70054e68-d997-4d05-9d44-e21047599db4' \
+--header 'Facility: varad' \
+--data ''`
   },
   {
     name: "Check Serviceability",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank">Curl Link</a>`,
     description: `Check Serviceability <a href="https://documentation.unicommerce.com/docs/saleorder-getserviceability.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/saleOrder/getServiceability' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+   "pincode": "245101",
+   "cashOnDelivery": true
+}'`
   },
   {
     name: "Create & Close Manifest",
@@ -689,6 +1041,7 @@
     description: `Get Shipping Manifest <a href="https://documentation.unicommerce.com/docs/shippingmanifest-get.html" target="_blank">Read Docs</a>`,
     curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
   },
+  
   {
     name: "Allocate Shipping Provider",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank">Curl Link</a>`,
@@ -699,19 +1052,49 @@
     name: "Mark Sale Order Return with Inventory Type",
     link: `<a href="https://ik.imagekit.io/u7af60cc4/Mark%20Sale%20Order%20Return%20with%20Inventory%20Type.txt?updatedAt=1751258318608" target="_blank">Curl Link</a>`,
     description: `Mark Sale Order Return with Inventory Type <a href="https://documentation.unicommerce.com/docs/saleorder_markreturned_with_inventory_type.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://varad.unicommerce.com/services/rest/v1/oms/returns/complete' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 6640f843-9884-4d0a-b324-36ba51ca70a2' \
+--header 'Facility: varad' \
+--data '{
+   "saleOrderCode": "SO09703",
+   "saleOrderItems": [
+      {
+         "code": "SO09703-0",
+         "status": "GOOD_INVENTORY"
+      },
+      {
+         "code": "SO09703-1",
+         "status": "BAD_INVENTORY",
+         "reason": "damaged"
+      }
+   ]
+   
+}'`
   },
   {
     name: "Create Shipping Manifest",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingpackage-getinvoicelabel.html" target="_blank">Curl Link</a>`,
     description: `Create Shipping Manifest <a href="https://documentation.unicommerce.com/docs/shippingmanifest-create.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl:`curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/shippingManifest/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+   "channel": "TestChannel",
+   "shippingProviderCode": "string",
+   "thirdPartyShipping": false
+}'`
   },
   {
     name: "Close Shipping Manifest",
     link: `<a href="https://documentation.unicommerce.com/docs/shippingmanifest-close.html" target="_blank">Curl Link</a>`,
-    description: `Close Shipping Manifest <a href="https://documentation.unicommerce.com/docs/shippingmanifest-create.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    description: `Close Shipping Manifest <a href="https://documentation.unicommerce.com/docs/shippingmanifest-close.html" target="_blank">Read Docs</a>`,
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/shippingManifest/close' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--data '{
+   "shippingManifestCode": "string"
+}'`
   },
   {
     name: "Update Tracking Status",
@@ -729,7 +1112,16 @@
     name: "Create Picklist",
     link: `<a href="https://documentation.unicommerce.com/docs/saleorder-item-markdelivered.html" target="_blank">Curl Link</a>`,
     description: `Create Picklist <a href="https://documentation.unicommerce.com/docs/create_picklist.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/picker/picklist/manual/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+
+"shippingPackageCodes" : ["SP-01951"],
+"destination" : "INVOICING"
+
+}'`
   },
   {
     name: "Mark Sale Order Returned",
@@ -741,18 +1133,32 @@
     name: "Get Return",
     link: `<a href="https://documentation.unicommerce.com/docs/saleorder-markreturned.html" target="_blank">Curl Link</a>`,
     description: `Get Return <a href="https://documentation.unicommerce.com/docs/return-get.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/return/get' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+   "reversePickupCode":"RP-0330",
+    "shipmentCode":null
+}'`
   },
   {
     name: "Search Return",
     link: `<a href="https://documentation.unicommerce.com/docs/return-search.html" target="_blank">Curl Link</a>`,
     description: `Search Return <a href="https://documentation.unicommerce.com/docs/return-get.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/return/get' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+   "reversePickupCode":"RP-0330",
+    "shipmentCode":null
+}'`
   },
   {
     name: "Create Reverse Pick-up",
     link: `<a href="https://documentation.unicommerce.com/docs/create-reversepickup.html" target="_blank">Curl Link</a>`,
-    description: `Create Reverse Pick-up <a href="https://documentation.unicommerce.com/docs/return-get.html" target="_blank">Read Docs</a>`,
+    description: `Create Reverse Pick-up <a href="https://documentation.unicommerce.com/docs/create-reversepickup.html" target="_blank">Read Docs</a>`,
     curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
   },
   {
@@ -789,7 +1195,15 @@
     name: "Allocate Courier for Reverse Pick-up",
     link: `<a href="https://documentation.unicommerce.com/docs/saleorder-alternateitem-accept.html" target="_blank">Curl Link</a>`,
     description: `Allocate Courier for Reverse Pick-up <a href="https://documentation.unicommerce.com/docs/reversepickup_allocate_courier.html" target="_blank">Read Docs</a>`,
-    curl: "curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/inventory/adjust' --header 'Content-Type: application/json' --header 'Authorization: bearer TOKEN' --header 'Facility:'"
+    curl: `curl --location 'https://trainingteam.unicommerce.com/services/rest/v1/oms/reversePickup/assignReverseProvider' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: bearer 687355db-930b-4d13-8476-81a1593dc10d' \
+--header 'Facility: warehouse24' \
+--data '{
+    "reversePickupCodes":[
+        "RP-0331"
+    ]
+}'`
   },
   {
     name: "Create Export Jobs",
